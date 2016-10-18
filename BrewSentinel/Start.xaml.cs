@@ -87,13 +87,11 @@ namespace BrewSentinel
         public void Close()
         {
             this.oneWireDeviceHandler.Dispose();
-            this.oneWireDeviceHandler = null;
         }
 
         public void OnNavigateFrom(NavigationEventArgs e)
         {
-            this.oneWireDeviceHandler.Dispose();
-            this.oneWireDeviceHandler = null;
+            this.oneWireDeviceHandler.Dispose();          
         }
       
 
