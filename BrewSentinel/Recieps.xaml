@@ -1,0 +1,29 @@
+﻿<Page
+    x:Class="BrewSentinel.Recieps"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BrewSentinel"
+    xmlns:template="using:BrewSentinel.Templates"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <template:DefaultTemplate>
+        <template:DefaultTemplate.Title>
+            <StackPanel>
+                <TextBlock x:Name="Foobar" Text="Meine Rezepte">sdfsd</TextBlock>
+            </StackPanel>
+        </template:DefaultTemplate.Title>
+        <template:DefaultTemplate.Main>
+            <Grid>
+                <TextBlock x:Name="dsf" Text="Das ist der Inhalt der Rezepte"></TextBlock>
+            </Grid>
+
+        </template:DefaultTemplate.Main>
+        <template:DefaultTemplate.Footer >
+            <Grid Background="Gray">
+                <TextBlock x:Name="Foo" Text="Hier ist der Footer">sdfsd</TextBlock>
+            </Grid>
+        </template:DefaultTemplate.Footer>
+    </template:DefaultTemplate>
+</Page>
