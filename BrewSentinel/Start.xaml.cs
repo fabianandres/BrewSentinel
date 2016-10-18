@@ -58,44 +58,28 @@ namespace BrewSentinel
         private async void GetTemperatures(ThreadPoolTimer timer)
         {
             try
-            {
-                if (this.oneWireDeviceHandler == null)
+            {                
+                using (var oneWireDeviceHandler = new OneWireDeviceHandler(true, true))
                 {
-                    this.oneWireDeviceHandler = new OneWireDeviceHandler(true, true);
+
+                    foreach (var device in oneWireDeviceHandler.OneWireDevices.GetDevices<DS18B20>())
+                    {
+                        var result = device.GetTemperature();
+                        this.tempData.Temperature = result;                      
+                    }
                 }
-
-                foreach (var device in oneWireDeviceHandler.OneWireDevices.GetDevices<DS18B20>())
-                {
-                    var result = device.GetTemperature();
-                    this.tempData.Temperature = result;
-                    // Insert code to log result in some way
-                    device.DS2482_100.Dispose();
-                }
-
-                this.oneWireDeviceHandler.Dispose();
-                this.oneWireDeviceHandler = null;
-
             }
             catch (Exception e)
             {
                 this.oneWireDeviceHandler.Dispose();
                 this.oneWireDeviceHandler = null;
-                // Insert code to log all exceptions!
             }
         }
 
         public void Close()
         {
-            this.oneWireDeviceHandler.Dispose();
-        }
-
-        public void OnNavigateFrom(NavigationEventArgs e)
-        {
-            this.oneWireDeviceHandler.Dispose();          
-        }
-      
-
-
+           
+        }  
 
 
     }
